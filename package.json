@@ -1,0 +1,35 @@
+{
+  "name": "isight_chat",
+  "version": "1.0.0",
+  "description": "A seneca microservice to provide chat and notification functionality",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --recursive -u tdd"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CExBBartolome/isight_chat.git"
+  },
+  "keywords": [
+    "isight_chat"
+  ],
+  "author": "CExBBartolome",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/CExBBartolome/isight_chat/issues"
+  },
+  "homepage": "https://github.com/CExBBartolome/isight_chat",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-open": "^0.2.3",
+    "grunt-plato": "^1.3.0",
+    "istanbul": "^0.3.2",
+    "load-grunt-tasks": "^1.0.0",
+    "mocha": "^2.0.1",
+    "proxyquire": "^1.1.0"
+  },
+  "dependencies": {
+    "bunyan": "1.2.3",
+    "lodash": "2.4.1"
+  }
+}
