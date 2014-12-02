@@ -1,26 +1,29 @@
 "use strict";
 var mocha = require('mocha');
 var assert = require('assert');
-var app;
+var server;
 
-suite("app.js",function(){
-	test("#server() is not undefined",function(){
-		app = require('../../app.js');
-		// console.log("typeof:"+(typeof app.server));
-		assert.notEqual(typeof app.server,'undefined');
-	});
-	suite("#server()",function(){
-		test("it should throw an exception if no port was provided", function(){
-			assert.throws(function(){
-				app.server();
-			});
+suite("lib/server.js",function(){
+	test("it should throw an exception if no port was provided", function(){
+		assert.throws(function(){
+			require('../../lib/server.js')();
+		});
+	})
+	test("it should throw an exception if port is invalid", function(){
+		assert.throws(function(){
+			require('../../lib/server.js')('string');
 		})
 	});
-	suite("#server({invalid})",function(){
-		test("it should throw an exception if port is invalid", function(){
-			assert.throws(function(){
-				app.server('string');
-			})
-		});
+	
+	test("is not undefined",function(){
+		server = require('../../lib/server.js')(1337);
+		assert.notEqual(typeof server,'undefined');
 	});
+	// test if listening on port 1337
+	// might need to use proxyquire
+});
+
+// test created microservice is able to receive messages
+suite("app.js",function(){
+
 });
