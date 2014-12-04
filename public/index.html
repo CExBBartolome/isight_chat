@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Chat demo</title>
+</head>
+<body>
+	<script src="socket.io.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<script src="bootstrap-growl.min.js"></script>
+	<script>
+	  var socket = io('http://localhost:1337');
+	  socket.on('connect',function(){
+	 	console.log("connected");
+		  socket.emit("login","@cexbbartolome");
+	  });  
+	  socket.on('msg', function (data) {
+		  var msg = {title:("<strong>"+data.from+"</strong>: "),message:data.msg};
+		  console.log(JSON.stringify("MSG: "+JSON.stringify(msg)));
+		  console.log(JSON.stringify("DATA: "+JSON.stringify(data)));
+		  $.growl(msg);
+	      });
+	</script>
+</body>
+</html>

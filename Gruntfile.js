@@ -4,11 +4,23 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     // Task configuration.
+	nodemon: {
+	      dev: {
+	      	      script: 'demo.js'
+	      }
+	    },
+	concurrent: {
+	      demo: ['nodemon','open:demo']
+	},
 	open: {
 	      platoReport: {
 		      path: './plato/index.html',
 		      app: 'Google Chrome'
-		    }
+		    },
+	      demo: {
+		      path: 'http://localhost:8080/index.html',
+		      app: 'Google Chrome'
+	      }
 	    },
         plato: {
 	      src: {
@@ -27,4 +39,5 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', []);
   grunt.registerTask('analysis', ['plato:src', 'open:platoReport']);
+  grunt.registerTask('demo',['concurrent:demo']);
 };
