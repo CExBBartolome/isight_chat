@@ -9,11 +9,11 @@ suite("lib/server.js",function(){
 		assert.throws(function(){
 			require('../../../lib/server.js')();
 		});
-	})
+	});
 	test("it should throw an exception if port is invalid", function(){
 		assert.throws(function(){
 			require('../../../lib/server.js')('string');
-		})
+		});
 	});
 	
 	test("is not undefined",function(){

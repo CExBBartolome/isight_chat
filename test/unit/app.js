@@ -7,7 +7,7 @@ var seneca = require('seneca')();
 suite("app.js",function(){
 	test("it should successfully use app.js in seneca",function(){
 		var pattern = {cmd:"chat"};
-		var opts = {pattern:pattern,port:1338}
+		var opts = {pattern:pattern,port:1338};
 
 		seneca.use('../../app.js',opts);
 	});
