@@ -7,13 +7,14 @@ module.exports = function(opts){
 	this.add(opts.pattern,function(args,cb){
 		// args is of the format {*pattern*,msg:}
 		// parse args.msg to identify which rooms to emit to
-		var pattern = /(\[?@|#)[^\W]*(\])?/g;
+		// var pattern = /(\[?@|#)[^\W]*(\])?/g;
+		var pattern = /\[@[^\]]*\]|[@#][^\s]*/g;
 		var channels = args.msg.msg.match(pattern);
 
 		console.log("Trying to send message "+args.msg.from+" "+args.msg.msg);
 		_.forEach(channels,function(channel){
 
-			server.in(channel).emit("msg",args.msg);
+			server.sockets.in(channel).emit("msg",args.msg);
 			console.log("Emitting to |"+channel+"|");
 		});
 
@@ -22,4 +23,4 @@ module.exports = function(opts){
 		// - no targets to connect to
 		cb(null,{status:"ok"});
 	});
-}
+};
