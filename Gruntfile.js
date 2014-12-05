@@ -10,17 +10,32 @@ module.exports = function(grunt) {
 	      }
 	    },
 	concurrent: {
-	      demo: ['nodemon','open:demo']
+	      demo: ['nodemon','open:demo_anon','open:demo_cexbbartolome','open:demo_case','open:demo_cexmnemr']
 	},
 	open: {
 	      platoReport: {
 		      path: './plato/index.html',
 		      app: 'Google Chrome'
 		    },
-	      demo: {
+	      demo_anon: {
 		      path: 'http://localhost:8080/index.html',
 		      app: 'Google Chrome'
+	      },
+	      demo_cexbbartolome: {
+		      path: 'http://localhost:8080/cexbbartolome.html',
+		      app: 'Google Chrome'
+	      },
+	      demo_case: {
+		      path: 'http://localhost:8080/case.html',
+		      app: 'Google Chrome'
+	      },
+	      demo_cexmnemr: {
+		      path: 'http://localhost:8080/cexmnemr.html',
+		      app: 'Google Chrome'
 	      }
+
+
+
 	    },
         plato: {
 	      src: {

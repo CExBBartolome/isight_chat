@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>@anonymous</title>
+	<title>#case</title>
 	<script src="bower_components/socket.io-client/socket.io.js"></script>
 	<script src="bower_components/jquery/dist/jquery.min.js"></script>
 	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -23,29 +23,29 @@
 	</script>
 	<div class="container">
 		<div class="row-fluid">
-			<h1>@anonymous</h1>
+			<h1>#case</h1>
 			<input class="col-lg-5" type="text" id="txtmsg"/>
 			<button onclick="send()" class="col-lg-1">Send</button>
 		</div>
 	</div>
 	<script>
-	  var anonymous = io('http://localhost:1337');
-	  anonymous.on('connect',function(){
+	  var caseSock = io('http://localhost:1337');
+	  caseSock.on('connect',function(){
 	 	console.log("connected");
-		  anonymous.emit("login","@anonymous");
+		  caseSock.emit("login","#case");
 	  });  
-	  anonymous.on('msg', function (data) {
+	  caseSock.on('msg', function (data) {
 		  var msg = {title:("<strong>"+data.from+"</strong>: "),message:data.msg,
 		  	offset: 20,
 			placement: {
-					from: "top",
-					align: "right"
+					from: "bottom",
+					align: "left"
 				},
 			animate: {
 					enter: 'animated fadeInDown',
 					exit: 'animated fadeOutUp'
 				},};
-		  console.log(JSON.stringify("@anonymous MSG: "+JSON.stringify(msg)));
+		  console.log(JSON.stringify("#case MSG: "+JSON.stringify(msg)));
 		  $.growl(msg);
 	      });
 	</script>
