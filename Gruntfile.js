@@ -13,10 +13,14 @@ module.exports = function(grunt) {
 	      demo: ['nodemon','open:demo_anon','open:demo_cexbbartolome','open:demo_case','open:demo_cexmnemr']
 	},
 	open: {
+	      istanbulReport: {
+		      path: './coverage/lcov-report/index.html',
+		      app: 'Google Chrome'
+	      },
 	      platoReport: {
 		      path: './plato/index.html',
 		      app: 'Google Chrome'
-		    },
+	      },
 	      demo_anon: {
 		      path: 'http://localhost:8080/index.html',
 		      app: 'Google Chrome'
@@ -53,6 +57,6 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt, {scope: 'devDependencies'});
   // Default task.
   grunt.registerTask('default', []);
-  grunt.registerTask('analysis', ['plato:src', 'open:platoReport']);
+  grunt.registerTask('analysis', ['plato:src', 'open:platoReport','open:istanbulReport']);
   grunt.registerTask('demo',['concurrent:demo']);
 };

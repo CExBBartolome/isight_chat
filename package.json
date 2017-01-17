@@ -4,7 +4,7 @@
   "description": "A seneca microservice to provide chat and notification functionality",
   "main": "app.js",
   "scripts": {
-    "test": "mocha --recursive -u tdd"
+    "test":"istanbul cover _mocha -- -u tdd -R spec --recursive test"
   },
   "repository": {
     "type": "git",

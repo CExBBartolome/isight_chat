@@ -11,4 +11,8 @@ suite("app.js",function(){
 
 		seneca.use('../../app.js',opts);
 	});
+	test("it should send a message to the @anonymous room",function(){
+		var msg = {cmd:"chat",msg:{from:"Anonymous",msg:"Message for @anonymous"}};
+		seneca.act(msg);
+	});
 });

@@ -1,7 +1,6 @@
 "use strict";
 var mocha = require('mocha');
 var assert = require('assert');
-var server;
 var seneca = require('seneca');
 
 suite("lib/server.js",function(){
@@ -17,8 +16,14 @@ suite("lib/server.js",function(){
 	});
 	
 	test("is not undefined",function(){
-		server = require('../../../lib/server.js')(1337);
+		var server = require('../../../lib/server.js')(1337);
+		var client = require('socket.io-client');
 		assert.notEqual(typeof server,'undefined');
+		console.log("type of:"+server);
+		client.connect("http://localhost:1337");
+		/*client.on("connect",function(){
+			client.emit("login","@anonymous");
+		});*/
 	});
 	// test if listening on port 1337
 	// might need to use proxyquire
